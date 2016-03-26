@@ -1,5 +1,5 @@
-require_relative 'lib/digester/digester.rb'
-require_relative 'lib/reader/reader.rb'
+require_relative 'lib/fetcher/fetcher.rb'
+# require_relative 'lib/reader/reader.rb'
 require_relative 'lib/saver/saver.rb'
 
 module Arachnid
