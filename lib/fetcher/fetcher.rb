@@ -16,14 +16,15 @@ module Arachnid
 
       # There is no point in allowing the user to set the body, so we won't
       # Allow the user to read the url of the instance, setter defined below
-    	attr_reader :body, :url
+    	attr_reader :body, :url, :method
 
       # Initialized as so:
       # Arachnid::Fetcher::Base.new("http://www.google.com")
       # Which will return the hhtml body from that url
-      def initialize(url)
+      def initialize(path, method = get_from_web)
       	@url = url
-      	@body = get(@url)
+        @method = method
+      	@body = get(@path)
       	@body
       end
 
@@ -31,7 +32,8 @@ module Arachnid
       # the instance variables
       def url=(new_url)
         @url = new_url
-        @body = get(@url)
+        # @body = get(@url)
+        @body = self.send(:method, @url)
         @body
       end
 
